@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="workApp">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Example</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="lib/bootstrap-3.3.4-dist/navbar-static-top.css" rel="stylesheet">
+
+    <!-- Angular JS -->
+    <script src="lib/angular-1.3.16/angular.js"></script>
+    <script src="lib/ng-file-upload/ng-file-upload.js"></script>
+    <script src="lib/ng-file-upload/ng-file-upload-shim.js"></script>
+    <script src="js/app.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="container main-container" ng-controller="mainCtrl" style="text-align: center;">
+
+      <div class="row header vertical-align">
+        <div class="col-md-4 header-logo" >
+            <img src="img/logo.png">
+        </div>
+        <div class="col-md-4 header-text-center" >Немного текста
+          <div>Немного текста</div>
+        </div>
+        <div class="col-md-4 header-text-right" >Ссылка на футер
+          <div>Ссылка на футер</div>
+        </div>
+      </div>
+
+      <div class="sub-conteiner">
+
+        <div class="row upper-table">
+          <div class="col-md-1"></div>
+          <div class="col-md-6">
+            <div class="info">
+              <div class="info-header">
+                <div class="info-header-title">1. Информация о пользователе</div>
+              </div>
+              <div class="form-inline info-form">
+                <div class="form-group" ng-class="in_inn_check" ng-click="in_inn_check = ''">
+                  <input type="text" class="form-control" id="in_inn" placeholder="ИНН (10 или 12 цифр)" ng-model='in_inn' valid-number>
+                </div>
+                <div class="form-group" ng-class="in_kpp_check" ng-click="in_kpp_check = ''">
+                  <input type="text" class="form-control" id="in_kpp" placeholder="КПП 9 цифр" ng-model='in_kpp' valid-number>
+                </div>
+              </div>
+              <div class="form-inline info-form-string">
+                <div class="form-group" ng-class="in_bik_check" ng-click="in_bik_check = ''">
+                  <input type="text" class="form-control" id="in_bik" placeholder="БИК 9 цифр" ng-model='in_bik' valid-number>
+                </div>
+                <div class="form-group" ng-class="in_kor_check" ng-click="in_kor_check = ''">
+                  <input type="text" class="form-control" id="in_kor" placeholder="Корсчет 20 цифр" ng-model='in_kor' valid-number>
+                </div>
+              </div>
+              <div class="form-inline info-form-string">
+                <div class="form-group" ng-class="in_rh_check" ng-click="in_rh_check = ''">
+                    <input type="text" class="form-control" id="in_rh" placeholder="Расчетный счет 20 цифр" ng-model='in_rh' valid-number>
+                </div>
+              </div>
+
+            </div><!-- end info -->
+            
+          </div>
+          <!-- <div class="col-md-1"></div> -->
+          <!-- <div class="col-lg-1" style="max-width: 30px;"></div> -->
+          <div class="col-md-4">
+            <div class="upload">
+              <div class="upload-header">
+                <div class="form-inline">
+                  <div class="form-group">
+                    2. Загрузите счет
+                  </div>
+                  <div class="form-group">
+                    <span id="helpBlock" class="help-block">pdf,doc,xls,jpg</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="upload-body">
+                <!-- watching model:
+                <div class="btn btn-primary" ngf-select ng-model="files">Upload using model $watch</div>
+                <div class="btn btn-primary" ngf-select ngf-change="upload($files)">Upload on file change</div>
+                Drop File: -->
+                <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'image/*,application/pdf,.pdf,.doc,.xls,.jpg'">Click or Drop pdf,doc,xls,jpg files here</div>
+                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                <ul class="upload-file-name">
+                  <li ng-repeat="f in files" style="font:smaller">{{f.name}}</li>
+                </ul>
+                <div style="color: red;">{{drop_box_error}}</div>
+
+              </div><!-- end upload-body -->
+
+              </div><!-- end upload -->
+
+            </div>
+          </div>
+          <!-- <div class="col-md-1"></div>       -->
+
+        </div><!-- end row upper-table -->
+
+        <div class="row middle-table">
+          <div class="col-md-12">
+            <div class="btn-place">
+              <button type="button" class="btn btn-lg btn-run" ng-click="runexec();" ng-show="btnrunShow">Поехали</button>
+            </div>
+            <div>{{out1}}</div>
+            <div class="progress-place" ng-show="progressShow">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">Загрузка...</div>
+              </div> 
+            </div>
+
+        </div><!-- end row middle-table -->
+
+        <div class="row down-table">
+          <div class="col-md-1"></div>
+          <div class="col-md-7">
+            <!-- <div class="bill">bill</div>  style="background-color: green;"-->
+            <div class="row">
+              <div class="col-md-6 plat-por"><ins><strong>ПЛАТЕЖНОЕ ПОРУЧЕНИЕ</strong></ins></div>
+              <div class="col-md-3">
+                <div id="out_data">out_data</div>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <div id="out_vid">out_vid</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-3">
+                <div class="help-block-vid">Дата</div>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <div class="help-block-vid">Вид платежа</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 plat-por-num"><ins><strong>ПЛАТЕЖНОЕ ПОРУЧЕНИЕ</strong></ins> №</div>
+              <div class="col-md-3">
+                <div id="out_data_2"><em>02.10.2009</em></div>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <div id="out_vid_2"><em>электронно</em></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-3">
+                <div class="help-block-vid">Дата</div>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <div class="help-block-vid">Вид платежа</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 table-place">
+                <!-- TABLE -->
+                <table style="min-width: 100%;">
+                  <tr>
+                      <td class="td-inn">ИНН</td>
+                      <td>КПП</td>
+                      <td rowspan="2">Сумма</td>
+                      <td rowspan="2">64900</td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                      <td rowspan="2"></td>
+                      <td rowspan="2"></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td rowspan="3"></td>
+                      <td rowspan="3"></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"></td>
+                  </tr>
+                </table>
+                <!-- END TABLE -->
+              </div>
+            </div>         
+
+          </div>
+
+          <div class="col-md-4 download-title">Скачать в формате 1С:</div>
+          <button type="button" class="btn btn-download">Скачать</button>
+
+
+        </div><!-- end row down-table -->
+
+      </div><!-- end sub-container -->
+
+      <!-- <div class="row" >  
+        <div class="col-lg-3" ></div>
+        <form class="col-lg-6">
+          <div class="form-group form-group-lg">
+            <h4>Основное требование как для тестовой задачки, так и для будущего основного задания - чтобы всё было красиво, хотя бы как в Bootstrap.
+            </h4>
+            <br>
+            <label class="sr-only" for="exampleInputEmail3">Введите число</label>
+            <input type="text" class="form-control" id="input_1" placeholder="Введите число от 0 до 100" ng-model='in1' valid-number>
+          </div>
+          <p style="text-align: center;">
+            <button type="button" class="btn btn-primary btn-lg" ng-click="runexec();" style="width: 300px;">Поехали</button>
+          </p>
+          <hr class="divider">
+          <span id="helpBlock" class="help-block">квадрат введенного числа
+            </span>
+          <h1 style="font-size: 72px;">{{out1}}</h1>
+        </form>
+        <div class="col-lg-3" ></div>
+      </div> --> <!-- end row -->
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery/1.11.2/jquery.min.js"></script>
+    <script src="lib/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+  </body>
+</html>

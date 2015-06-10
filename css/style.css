@@ -1,0 +1,234 @@
+body{
+	background-color: WhiteSmoke;
+	margin-top: 60px;
+}
+li {
+    list-style-type: none; /* Убираем маркеры */
+   }
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.main-container {
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+
+	min-height: 1000px;
+}
+
+.test{
+	background-color: grey;
+}
+.header{
+	min-height: 81px;
+	max-height: 81px;
+	border-bottom: 1px solid black;
+	color: grey;
+}
+.header-logo{
+	/*background-color: yellow;*/
+
+	min-width: 350px;
+	max-width: 350px;
+	
+	margin-left: -15px;
+}
+
+.header-text-center{
+	display: inline-block;
+	vertical-align: middle;
+}
+.header-text-right{
+	text-align: right;
+}
+.sub-conteiner{
+	margin-top: 60px;
+	/*background-color: grey;*/
+}
+.upper-table{
+	/*min-height: 300px;*/
+
+}
+.info{
+	min-height: 260px;
+	background-color: WhiteSmoke;
+	border: 1px solid silver;
+}
+.info-header{
+	min-height: 40px;
+	background-color: gold;
+	border-bottom: 1px solid silver;
+}
+.info-header-title{
+	padding-top: 8px;
+}
+.upload{
+	min-height: 260px;
+	background-color: WhiteSmoke;
+	border: 1px solid silver;
+}
+.upload-header{
+	min-height: 40px;
+	background-color: gold;
+	border-bottom: 1px solid silver;
+}
+.upload-body{
+	text-align: center;
+}
+
+.info-form{
+	margin-top: 30px;
+}
+.info-form-string{
+	margin-top: 15px;
+}
+.form-inline{
+	/*padding-top: 15px;*/
+}
+#in_inn{
+	width: 200px;
+}
+#in_kpp{
+	width: 300px;
+}
+#in_bik{
+	width: 200px;
+}
+#in_kor{
+	width: 300px;
+}
+#in_rh{
+	width: 500px;
+}
+.btn-place{
+	min-height: 40px;
+}
+ 
+.btn-run{
+	width: 300px;
+	margin-top: 50px;
+	background-color: gold;
+	color: black;
+	border-color: silver;
+}
+.btn-run:hover{
+	background-color: yellow;
+}
+.btn-run:active{
+	background-color: yellow;
+}
+.download-title{
+	color: grey;
+}
+.btn-download{
+	width: 100px;
+	margin-top: 10px;
+	background-color: gold;
+	color: black;
+	border-color: silver;
+}
+.btn-download:hover{
+	background-color: yellow;
+}
+.btn-download:active{
+	background-color: yellow;
+}
+.progress-place{
+/*margin-left: 37%;
+	max-width: 800px;*/
+}
+.progress{
+	margin:auto;
+	max-width: 305px;
+}
+.progress-bar{
+	color: grey;
+	background-color: gold;
+}
+.drop-box{
+	min-height: 140px;
+	/*min-width: 100px;*/
+	/*background-color: grey;*/
+
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 80%;
+    height: 65px;
+    text-align: center;
+    padding-top: 25px;
+    
+    margin:auto;
+    margin-top: 30px;
+    color: grey;
+}
+.dragover {
+    border: 5px dashed gold;
+}
+.upload-file-name{
+	margin-left: -20px;
+	margin-top: 20px;
+	color: grey;
+}
+.down-table{
+	margin-top: 150px;
+}
+.bill{
+	background-color: grey;
+	min-height: 300px;
+}
+.plat-por{
+	/*line-height: 35px;*/
+	margin-top: 10px;
+	text-align: left;
+	font-size: 20px;
+}
+.plat-por-num{
+	margin-top: 20px;
+	text-align: left;
+}
+#out_data{
+	border: 1px solid black;
+	min-height: 35px;
+	min-width: 160px;
+	line-height: 35px;
+}
+#out_vid{
+	border: 1px solid black;
+	min-height: 35px;
+	min-width: 160px;
+	line-height: 35px;
+}
+#out_data_2{
+	margin-top: 20px;
+	border-bottom: 1px solid black;
+	min-width: 160px;
+	color: Chocolate;
+}
+
+#out_vid_2{
+	margin-top: 20px;
+	border-bottom: 1px solid black;
+	min-width: 160px;
+	color: Chocolate;
+}
+.help-block-data{
+	font-size: 10px;
+	text-align: center;
+	min-width: 160px;
+}
+.help-block-vid{
+	font-size: 10px;
+	min-width: 160px;
+}
+/*TABLE*/
+.table-place{
+	background-color: grey;
+	margin-top: 20px;
+}
+.td-td-inn{
+	
+}
+/*END TABLE*/
